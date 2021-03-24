@@ -15,22 +15,76 @@ function App() {
   ]);
 
   const [currentSale, setCurrentSale] = useState([]);
+  console.log(currentSale);
+  const style = {
+    fontSize: 20,
 
-  console.log();
+    padding: "10px",
+  };
 
+  const style_fora = {
+    color: "white",
+    fontSize: 20,
+
+    padding: "10px",
+  };
+
+  const style_row = {
+    display: "flex",
+
+    flexDirection: "row",
+
+    fontSize: 20,
+  };
+
+  const produto = {
+    color: "white",
+    fontSize: 20,
+
+    width: "100%",
+  };
+
+  const total = currentSale.reduce((total, preco) => total + preco[2], 0);
   return (
     <div className="App">
       <header className="App-header">
         {currentSale.map((carrinho, index) => (
           // const desco = props.price - (props.price * props.desc) / 100;
+
           <>
-            {product[carrinho[0] - 1].name} preço{" "}
-            {product[carrinho[0] - 1].price} desconto {carrinho[1]}{" "}
+            <div style={style_fora}>
+              <div style={produto}>{product[carrinho[0] - 1].name}</div>
+              <div style={style_row}>
+                <div style={style}>
+                  preço
+                  <br />
+                  {product[carrinho[0] - 1].price}
+                </div>
+                <div style={style}>
+                  {" "}
+                  desconto <br />
+                  {carrinho[1]}%
+                </div>
+                <div style={style}>
+                  valor desconto
+                  <br />
+                  {product[carrinho[0] - 1].price -
+                    product[carrinho[0] - 1].price -
+                    (product[carrinho[0] - 1].price * carrinho[1]) / 100}
+                </div>
+                <div style={style}>
+                  valor a pagar
+                  <br />
+                  {product[carrinho[0] - 1].price -
+                    (product[carrinho[0] - 1].price * carrinho[1]) / 100}
+                </div>
+              </div>
+            </div>
+            <hr style={{ width: "100%" }} />
           </>
         ))}
-
+        total: {total}
         <div>carrinho de compras</div>
-
         <ProductList
           produtos={product}
           array={currentSale}

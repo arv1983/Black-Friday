@@ -20,7 +20,7 @@ const Product = (props) => {
         {desco}
         <button
           onClick={() =>
-            props.setArray([...props.array, ...[[props.id, props.desc]]])
+            props.setArray([...props.array, ...[[props.id, props.desc, desco]]])
           }
         >
           Buy
